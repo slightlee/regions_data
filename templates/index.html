@@ -4,18 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Region Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            /* 以列方向排列元素 */
+            align-items: flex-start;
+            /* 左对齐 */
+        }
+
+        select {
+            padding: 10px;
+            margin-top: 15px;
+            /* 为了确保下拉框与上一个元素之间有间距 */
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            /* 可以调整下拉框的宽度 */
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #5b9dd9;
+            box-shadow: 0 0 2px rgba(0, 113, 186, 0.5);
+        }
+
+        .selector-container {
+            display: flex;
+            flex-direction: column;
+            /* 以列方向排列元素 */
+        }
+    </style>
 </head>
 
 <body>
-    <select id="province" onchange="loadCities()">
-        <option>Select Province</option>
-    </select>
-    <select id="city" onchange="loadDistricts()">
-        <option>Select City</option>
-    </select>
-    <select id="district">
-        <option>Select District</option>
-    </select>
+    <div class="selector-container">
+        <select id="province" onchange="loadCities()">
+            <option>Select Province</option>
+        </select>
+        <select id="city" onchange="loadDistricts()">
+            <option>Select City</option>
+        </select>
+        <select id="district">
+            <option>Select District</option>
+        </select>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -37,6 +76,10 @@
                 .then(data => {
                     const citySelect = document.getElementById('city');
                     citySelect.innerHTML = '<option>Select City</option>'; // reset
+
+                    const districtSelect = document.getElementById('district');
+                    districtSelect.innerHTML = '<option>Select District</option>'; // reset
+
                     data.forEach(([code, name]) => {
                         const option = new Option(name, code);
                         citySelect.add(option);
