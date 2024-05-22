@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Region Selector</title>
+</head>
+
+<body>
+    <select id="province" onchange="loadCities()">
+        <option>Select Province</option>
+    </select>
+    <select id="city" onchange="loadDistricts()">
+        <option>Select City</option>
+    </select>
+    <select id="district">
+        <option>Select District</option>
+    </select>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('/api/provinces')
+                .then(response => response.json())
+                .then(data => {
+                    const provincesSelect = document.getElementById('province');
+                    data.forEach(([code, name]) => {
+                        const option = new Option(name, code);
+                        provincesSelect.add(option);
+                    });
+                });
+        });
+
+        function loadCities() {
+            const provinceCode = document.getElementById('province').value;
+            fetch(`/api/cities/${provinceCode}`)
+                .then(response => response.json())
+                .then(data => {
+                    const citySelect = document.getElementById('city');
+                    citySelect.innerHTML = '<option>Select City</option>'; // reset
+                    data.forEach(([code, name]) => {
+                        const option = new Option(name, code);
+                        citySelect.add(option);
+                    });
+                });
+        }
+
+        function loadDistricts() {
+            const cityCode = document.getElementById('city').value;
+            fetch(`/api/districts/${cityCode}`)
+                .then(response => response.json())
+                .then(data => {
+                    const districtSelect = document.getElementById('district');
+                    districtSelect.innerHTML = '<option>Select District</option>'; // reset
+                    data.forEach(([code, name]) => {
+                        const option = new Option(name, code);
+                        districtSelect.add(option);
+                    });
+                });
+        }
+    </script>
+</body>
+
+</html>

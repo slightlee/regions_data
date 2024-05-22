@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask,render_template, jsonify
 import sqlite3
 
 app = Flask(__name__)
@@ -32,6 +32,13 @@ def get_districts(city_code):
     district_data = c.fetchall()
     conn.close()
     return jsonify(district_data)
+
+
+# 示例页面
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
