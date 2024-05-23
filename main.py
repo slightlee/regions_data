@@ -2,7 +2,7 @@ from fetch_data import fetch_province_data,fetch_city_data,fetch_district_data,f
 from database_ops import create_provinces_table, insert_province, check_provinces_data, create_city_table,insert_city,check_city_data,create_district_table,insert_district,check_district_data
 
 
-base_url = 'https://www.stats.gov.cn/sj/tjbz/tjyqhdmhcxhfdm/2023/'
+base_url = '手动添加URL地址'
 
 
 def main():
@@ -39,14 +39,6 @@ def main():
 
            else:
                print('未找到城市数据')
-
-
-
-    # 检查并打印数据库中所有省份的数据
-    # check_city_data()
-
-
-
 
 
 if __name__ == '__main__':

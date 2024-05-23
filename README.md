@@ -23,10 +23,15 @@
 
 ## 使用方法：
 
+### 方式一：【重新生成】
 > 1. 下载本项目
-> 2. 安装依赖：`pip install -r requirements.txt`
-> 3. 运行：`python main.py`
-> 4. 生成的数据文件保存在 `regions.db` 中
+> 2. 修改`main.py` 中 `base_url` 地址
+> 3. 安装依赖：`pip install -r requirements.txt`
+> 4. 运行：`python main.py`
+> 5. 生成的数据文件保存在 `regions.db` 中
+
+### 方式二：【直接使用 regions.db 数据】
+
 
 ### 预览效果
 

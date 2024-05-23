@@ -113,8 +113,6 @@ def fetch_district_data(url):
 
 
 # 拼接地址 
-# 例如：110100000000 市辖区  https://www.stats.gov.cn/sj/tjbz/tjyqhdmhcxhfdm/2023/11.html
-# 例如：110101000000 区县    https://www.stats.gov.cn/sj/tjbz/tjyqhdmhcxhfdm/2023/11/1101.html
 def fetch_url(base_url, _url):
     # 确保 base_url 以斜杠结束
     if not base_url.endswith('/'):
@@ -125,49 +123,3 @@ def fetch_url(base_url, _url):
     __url = f"{base_url}{_url_str}"
     return __url
     
-
-
-# 市级地址
-# city_url = fetch_url(base_url,'35.html')
-# print(city_url)
-
-# 区县url
-# district = fetch_url(base_url,'35/3501.html')
-# print(district)
-
-
-# # 省级数据
-# provinces_data = fetch_province_data(base_url)
-# for province in provinces_data:
-#     print(province)  # 打印出所有省份的名称和代码
-
-# # 市级 市辖区数据
-# city_data = fetch_city_data(city_url)
-# for city in city_data:
-#     print(city)  # 打印出所有省份的名称和代码
-
-
-# # 区县数据
-# district_data = fetch_district_data(district)
-# for district in district_data:
-#     print(district)  # 打印出所有区县的代码和名称
-
-
-# 汇总版
-
-# provinces_data = fetch_province_data(base_url)
-# for province in provinces_data:
-#     code = int(province['code'])
-#     if code == 11:
-#         print(code)
-#         # 获取市辖区的数据
-#         city_url = fetch_city_url(base_url, province['url'])
-#         print('市辖区URL' + city_url)
-#         city_data = fetch_city_data(city_url)
-#         for city in city_data:
-#             # 获取区县的数据
-#             district_url = fetch_district_url(base_url, city['url'])
-#             print('区县URL' + district_url)
-#             district_data = fetch_district_data(district_url)
-#             for district in district_data:
-#                 print(province['name'], city['name'],district['code'], district['name'])
