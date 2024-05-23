@@ -34,3 +34,8 @@
 > 2. 访问： `http://127.0.0.1:5000/`
 
 ![xg](./images/xg.gif)
+
+
+## 拓展
+
+> 1. 生成`requirements.txt`文件命令： `pipreqs ./ --encoding=utf8`
