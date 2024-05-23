@@ -4,12 +4,20 @@ import sqlite3
 from typing import List
 import uvicorn
 
+import os
+
 app = FastAPI()
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PARENT_DIR = os.path.dirname(BASE_DIR)
+
+regions_db_directory = os.path.join(PARENT_DIR, "regions.db")
 
 # 省级数据接口
 @app.get("/api/provinces")
 def get_provinces():
-    conn = sqlite3.connect('../regions.db')
+    conn = sqlite3.connect(regions_db_directory)
     c = conn.cursor()
     c.execute("SELECT code, name FROM provinces")
     provinces_data = c.fetchall()
@@ -20,7 +28,7 @@ def get_provinces():
 # 市级数据接口
 @app.get('/api/cities/{province_code}')
 def get_cities(province_code: str):
-    conn = sqlite3.connect('../regions.db')
+    conn = sqlite3.connect(regions_db_directory)
     c = conn.cursor()
     c.execute("SELECT code, name FROM city WHERE p_code = ?", (province_code,))
     cities_data = c.fetchall()
@@ -31,7 +39,7 @@ def get_cities(province_code: str):
 # 区县级数据接口
 @app.get('/api/districts/{city_code}')
 def get_districts(city_code: str):
-    conn = sqlite3.connect('../regions.db')
+    conn = sqlite3.connect(regions_db_directory)
     c = conn.cursor()
     c.execute("SELECT code, name FROM district WHERE c_code = ?", (city_code,))
     district_data = c.fetchall()
@@ -39,7 +47,8 @@ def get_districts(city_code: str):
     return district_data
 
 
-templates = Jinja2Templates(directory="../templates")
+templates_directory = os.path.join(PARENT_DIR, "templates")
+templates = Jinja2Templates(directory=templates_directory)
 
 # 创建一个 route，当访问根目录 "/" 时，使用模板引擎渲染 index.html
 @app.get("/")
