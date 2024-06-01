@@ -1,9 +1,6 @@
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 import sqlite3
-from typing import List
-import uvicorn
-
 import os
 
 app = FastAPI()
