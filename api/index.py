@@ -57,7 +57,7 @@ async def read_index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
-if __name__ == "__main__":
-    # 对应 'index:app'
-    # 其中 'index' 是文件名（不含 '.py'），'app' 是 FastAPI 实例的变量名
-    uvicorn.run("index:app", host="127.0.0.1", port=8000, reload=True)
+# if __name__ == "__main__":
+#     # 对应 'index:app'
+#     # 其中 'index' 是文件名（不含 '.py'），'app' 是 FastAPI 实例的变量名
+#     uvicorn.run("index:app", host="127.0.0.1", port=8000, reload=True)
