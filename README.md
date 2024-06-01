@@ -27,7 +27,7 @@
 > 1. 下载本项目
 > 2. 修改`main.py` 中 `base_url` 地址
 > 3. 安装依赖：`pip install -r requirements.txt`
-> 4. 运行：`python main.py`
+> 4. 运行：`python data_/main.py`
 > 5. 生成的数据文件保存在 `regions.db` 中
 
 ### 方式二：【直接使用 regions.db 数据】
@@ -35,9 +35,15 @@
 
 ### 预览效果
 
-> 1. 运行： `python app.py`
-> 2. 访问： `http://127.0.0.1:5000/`
+#### 在线预览
 
+> 访问: `https://regions-data.vercel.app/`
+
+#### 本地预览
+> 1. 运行： `python main.py`
+> 2. 访问： `http://127.0.0.1:8000/`
+
+效果图：
 ![xg](./images/xg.gif)
 
 
