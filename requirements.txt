@@ -1,5 +1,5 @@
 beautifulsoup4==4.12.3
 fastapi==0.111.0
-Flask==2.2.5
+# Flask==2.2.5
 Requests==2.32.2
 uvicorn==0.29.0
