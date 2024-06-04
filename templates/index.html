@@ -8,25 +8,22 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             background-color: #f4f4f4;
             display: flex;
-            flex-direction: column;
-            /* 以列方向排列元素 */
-            align-items: flex-start;
-            /* 左对齐 */
+            align-items: center;
+            justify-content: center; /* 垂直水平居中 */
+            height: 100vh; /* 使body占满整个视口高度 */
         }
 
         select {
             padding: 10px;
-            margin-top: 15px;
-            /* 为了确保下拉框与上一个元素之间有间距 */
+            margin: 0 6px;
             border-radius: 5px;
             border: 1px solid #ddd;
             background-color: #fff;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             width: 200px;
-            /* 可以调整下拉框的宽度 */
         }
 
         select:focus {
@@ -37,8 +34,9 @@
 
         .selector-container {
             display: flex;
-            flex-direction: column;
-            /* 以列方向排列元素 */
+            /* flex-direction: column; */ /* 竖向排列 */
+            flex-direction: row; /* 横向排列 */
+            align-items: center; /* 水平居中 */
         }
     </style>
 </head>
