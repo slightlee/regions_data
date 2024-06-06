@@ -1,8 +1,8 @@
 from fetch_data import fetch_province_data, fetch_city_data, fetch_district_data, fetch_town_data, fetch_url
-from database_ops import create_provinces_table, insert_province, check_provinces_data,get_all_provinces
-from database_ops import create_city_table, insert_city, check_city_data,get_all_city
-from database_ops import create_district_table, insert_district, check_district_data,get_all_district
-from database_ops import create_town_table, insert_town, check_town_data
+from database_ops import create_provinces_table, insert_province,get_all_provinces
+from database_ops import create_city_table, insert_city,get_all_city
+from database_ops import create_district_table, insert_district,get_all_district
+from database_ops import create_town_table, insert_town
 from time_logger import TimeLogger
 
 

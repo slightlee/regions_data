@@ -26,13 +26,6 @@ def insert_province(code,name,url):
     conn.commit()
     conn.close()
 
-# 查看数据
-def check_provinces_data():
-    conn = sqlite3.connect('../regions.db')
-    c = conn.cursor()
-    for row in c.execute('SELECT * FROM provinces'):
-        print(row)
-    conn.close()
 
 # 获取省级数据
 def get_all_provinces():
@@ -68,14 +61,6 @@ def insert_city(code,name,p_code,url):
             name = excluded.name;
             """, (code, name, p_code, url))
     conn.commit()
-    conn.close()
-
-# 查看市级数据
-def check_city_data():
-    conn = sqlite3.connect('../regions.db')
-    c = conn.cursor()
-    for row in c.execute('SELECT * FROM city'):
-        print(row)
     conn.close()
 
 # 获取市级数据
@@ -115,15 +100,8 @@ def insert_district(code,name,c_code,p_code,url):
     conn.commit()
     conn.close()
 
-# 查看区县级数据
-def check_district_data():
-    conn = sqlite3.connect('../regions.db')
-    c = conn.cursor()
-    for row in c.execute('SELECT * FROM district'):
-        print(row)
-    conn.close()
 
-# 获取市级数据
+# 获取区县级数据
 def get_all_district():
     conn = sqlite3.connect('../regions.db')
     c = conn.cursor()
@@ -160,10 +138,3 @@ def insert_town(code,name,c_code,p_code,url):
     conn.commit()
     conn.close()
 
-# 查看乡镇街道数据
-def check_town_data():
-    conn = sqlite3.connect('../regions.db')
-    c = conn.cursor()
-    for row in c.execute('SELECT * FROM town'):
-        print(row)
-    conn.close()
