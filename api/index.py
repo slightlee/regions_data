@@ -34,21 +34,21 @@ def get_cities(province_code: str):
 
 
 # 区县级数据接口
-@app.get('/api/districts/{city_code}')
-def get_districts(city_code: str):
+@app.get('/api/countys/{city_code}')
+def get_countys(city_code: str):
     conn = sqlite3.connect(regions_db_directory)
     c = conn.cursor()
-    c.execute("SELECT code, name FROM district WHERE c_code = ?", (city_code,))
-    district_data = c.fetchall()
+    c.execute("SELECT code, name FROM county WHERE c_code = ?", (city_code,))
+    county_data = c.fetchall()
     conn.close()
-    return district_data
+    return county_data
 
 # 乡级数据接口
-@app.get('/api/towns/{district_code}')
-def get_towns(district_code: str):
+@app.get('/api/towns/{county_code}')
+def get_towns(county_code: str):
     conn = sqlite3.connect(regions_db_directory)
     c = conn.cursor()
-    c.execute("SELECT code, name FROM town WHERE c_code = ?", (district_code,))
+    c.execute("SELECT code, name FROM town WHERE c_code = ?", (county_code,))
     town_data = c.fetchall()
     conn.close()
     return town_data

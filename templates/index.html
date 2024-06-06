@@ -46,11 +46,11 @@
         <select id="province" onchange="loadCities()">
             <option>Select Province</option>
         </select>
-        <select id="city" onchange="loadDistricts()">
+        <select id="city" onchange="loadCountys()">
             <option>Select City</option>
         </select>
-        <select id="district" onchange="loadTown()">
-            <option>Select District</option>
+        <select id="county" onchange="loadTown()">
+            <option>Select County</option>
         </select>
         <select id="town">
             <option>Select Town</option>
@@ -78,8 +78,8 @@
                     const citySelect = document.getElementById('city');
                     citySelect.innerHTML = '<option>Select City</option>'; // reset
 
-                    const districtSelect = document.getElementById('district');
-                    districtSelect.innerHTML = '<option>Select District</option>'; // reset
+                    const countySelect = document.getElementById('county');
+                    countySelect.innerHTML = '<option>Select County</option>'; // reset
 
                     data.forEach(([code, name]) => {
                         const option = new Option(name, code);
@@ -88,22 +88,22 @@
                 });
         }
 
-        function loadDistricts() {
+        function loadCountys() {
             const cityCode = document.getElementById('city').value;
-            fetch(`/api/districts/${cityCode}`)
+            fetch(`/api/countys/${cityCode}`)
                 .then(response => response.json())
                 .then(data => {
-                    const districtSelect = document.getElementById('district');
-                    districtSelect.innerHTML = '<option>Select District</option>'; // reset
+                    const countySelect = document.getElementById('county');
+                    countySelect.innerHTML = '<option>Select County</option>'; // reset
                     data.forEach(([code, name]) => {
                         const option = new Option(name, code);
-                        districtSelect.add(option);
+                        countySelect.add(option);
                     });
                 });
         }
 
         function loadTown() {
-            const townCode = document.getElementById('district').value;
+            const townCode = document.getElementById('county').value;
             fetch(`/api/towns/${townCode}`)
                 .then(response => response.json())
                 .then(data => {

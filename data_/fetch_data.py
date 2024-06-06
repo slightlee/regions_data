@@ -80,7 +80,7 @@ def fetch_city_data(url):
 
 
 # 区县数据
-def fetch_district_data(url):
+def fetch_county_data(url):
 
     response = requests.get(url, headers=headers)
     response.encoding = response.apparent_encoding  # 根据网页内容自动确定编码
@@ -90,26 +90,26 @@ def fetch_district_data(url):
         return []
 
     soup = BeautifulSoup(response.text, 'html.parser')
-    district_list = []  # 初始化一个空列表来存储区县数据
+    county_list = []  # 初始化一个空列表来存储区县数据
 
     # 查找区县的表格
-    district_table = soup.find('table', class_='countytable')  # 根据实际的class名来确定
-    if district_table:
-        for district_tr in district_table.find_all('tr', class_='countytr'):
-            district_details = {}  
-            code_td = district_tr.find('td')
+    county_table = soup.find('table', class_='countytable')  # 根据实际的class名来确定
+    if county_table:
+        for county_tr in county_table.find_all('tr', class_='countytr'):
+            county_details = {}  
+            code_td = county_tr.find('td')
             if code_td and code_td.find('a'):
-                district_details['code'] = code_td.find('a').text.strip()
-                district_details['url'] = code_td.find('a')['href'].strip()
+                county_details['code'] = code_td.find('a').text.strip()
+                county_details['url'] = code_td.find('a')['href'].strip()
             name_td = code_td.find_next_sibling('td')
             if name_td and name_td.find('a'):
-                district_details['name'] = name_td.find('a').text.strip()
-            if district_details:
-                district_list.append(district_details)  # 将区县数据添加到列表中
+                county_details['name'] = name_td.find('a').text.strip()
+            if county_details:
+                county_list.append(county_details)  # 将区县数据添加到列表中
     else:
         print("未找到区县信息表格。")
 
-    return district_list
+    return county_list
 
 # 乡镇街道数据
 def fetch_town_data(url):

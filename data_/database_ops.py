@@ -74,12 +74,12 @@ def get_all_city():
 
 
 # 区县级表
-def create_district_table():
+def create_county_table():
     conn = sqlite3.connect('../regions.db')
     c = conn.cursor()
     with conn:
         c.execute('''
-                CREATE TABLE IF NOT EXISTS district (
+                CREATE TABLE IF NOT EXISTS county (
                     code TEXT UNIQUE,
                     name TEXT,
                     c_code TEXT,
@@ -88,11 +88,11 @@ def create_district_table():
                 )''')
 
 # 插入区县级表
-def insert_district(code,name,c_code,p_code,url):
+def insert_county(code,name,c_code,p_code,url):
     conn = sqlite3.connect('../regions.db')
     c = conn.cursor()
     c.execute("""
-            INSERT INTO district (code, name, c_code, p_code, url) 
+            INSERT INTO county (code, name, c_code, p_code, url) 
             VALUES (?, ?, ?, ?, ?)
             ON CONFLICT(code) DO UPDATE SET
             name = excluded.name;
@@ -102,13 +102,13 @@ def insert_district(code,name,c_code,p_code,url):
 
 
 # 获取区县级数据
-def get_all_district():
+def get_all_county():
     conn = sqlite3.connect('../regions.db')
     c = conn.cursor()
-    c.execute('SELECT * FROM district')
-    district = c.fetchall()
+    c.execute('SELECT * FROM county')
+    county = c.fetchall()
     conn.close()
-    return district
+    return county
 
 
 # 乡镇街道表

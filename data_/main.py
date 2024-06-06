@@ -1,7 +1,7 @@
-from fetch_data import fetch_province_data, fetch_city_data, fetch_district_data, fetch_town_data, fetch_url
+from fetch_data import fetch_province_data, fetch_city_data, fetch_county_data, fetch_town_data, fetch_url
 from database_ops import create_provinces_table, insert_province,get_all_provinces
 from database_ops import create_city_table, insert_city,get_all_city
-from database_ops import create_district_table, insert_district,get_all_district
+from database_ops import create_county_table, insert_county,get_all_county
 from database_ops import create_town_table, insert_town
 from time_logger import TimeLogger
 
@@ -37,32 +37,32 @@ def op_city_data():
     print("地级数据插入完成！！！")
 
 
-def op_district_data():
-    create_district_table()
+def op_county_data():
+    create_county_table()
     city_data = get_all_city()
     for city in city_data:
        if city[3]:
-            district_url = fetch_url(base_url,city[3])
-            district_data = fetch_district_data(district_url)
+            county_url = fetch_url(base_url,city[3])
+            county_data = fetch_county_data(county_url)
             city_code = city[0]
             p_code = city[2]
-            for district in district_data:
-                print(district)
-                insert_district(district['code'],district['name'],city_code,p_code,district['url'])
+            for county in county_data:
+                print(county)
+                insert_county(county['code'],county['name'],city_code,p_code,county['url'])
     print("县级数据插入完成！！！")
 
 
 def op_town_data():
     create_town_table()
-    district_data = get_all_district()
-    for district in district_data:
-        town_url = fetch_url(base_url + district[3] + "/",district[4])
+    county_data = get_all_county()
+    for county in county_data:
+        town_url = fetch_url(base_url + county[3] + "/",county[4])
         town_data = fetch_town_data(town_url)
-        district_code = district[0]
-        p_code = district[3]
+        county_code = county[0]
+        p_code = county[3]
         for town in town_data:
             print(town)
-            insert_town(town['code'],town['name'],district_code,p_code,town['url'])
+            insert_town(town['code'],town['name'],county_code,p_code,town['url'])
     print("乡级数据插入完成！！！")
 
 
@@ -76,7 +76,7 @@ def main():
 
     # op_provinces_data()
     # op_city_data()
-    # op_district_data()
+    # op_county_data()
     op_town_data()
 
     # 结束时间
