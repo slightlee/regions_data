@@ -49,8 +49,11 @@
         <select id="city" onchange="loadDistricts()">
             <option>Select City</option>
         </select>
-        <select id="district">
+        <select id="district" onchange="loadTown()">
             <option>Select District</option>
+        </select>
+        <select id="town">
+            <option>Select Town</option>
         </select>
     </div>
 
@@ -95,6 +98,20 @@
                     data.forEach(([code, name]) => {
                         const option = new Option(name, code);
                         districtSelect.add(option);
+                    });
+                });
+        }
+
+        function loadTown() {
+            const townCode = document.getElementById('district').value;
+            fetch(`/api/towns/${townCode}`)
+                .then(response => response.json())
+                .then(data => {
+                    const townSelect = document.getElementById('town');
+                    townSelect.innerHTML = '<option>Select Town</option>'; // reset
+                    data.forEach(([code, name]) => {
+                        const option = new Option(name, code);
+                        townSelect.add(option);
                     });
                 });
         }

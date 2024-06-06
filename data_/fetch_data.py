@@ -111,6 +111,36 @@ def fetch_district_data(url):
 
     return district_list
 
+# 乡镇街道数据
+def fetch_town_data(url):
+    response = requests.get(url, headers=headers)
+    response.encoding = response.apparent_encoding  # 根据网页内容自动确定编码
+
+    if response.status_code != 200:
+        print('获取数据失败: 状态码', response.status_code)
+        return []
+
+    soup = BeautifulSoup(response.text, 'html.parser')
+    town_list = [] 
+
+    town_table = soup.find('table', class_='towntable')  
+    if town_table:
+        for town_tr in town_table.find_all('tr', class_='towntr'):
+            town_details = {}  
+            code_td = town_tr.find('td')
+            if code_td and code_td.find('a'):
+                town_details['code'] = code_td.find('a').text.strip()
+                town_details['url'] = code_td.find('a')['href'].strip()
+            name_td = code_td.find_next_sibling('td')
+            if name_td and name_td.find('a'):
+                town_details['name'] = name_td.find('a').text.strip()
+            if town_details:
+                town_list.append(town_details) 
+    else:
+        print("未找到乡镇街道信息表格。")
+
+    return town_list
+
 
 # 拼接地址 
 def fetch_url(base_url, _url):

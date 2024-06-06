@@ -43,6 +43,16 @@ def get_districts(city_code: str):
     conn.close()
     return district_data
 
+# 乡级数据接口
+@app.get('/api/towns/{district_code}')
+def get_towns(district_code: str):
+    conn = sqlite3.connect(regions_db_directory)
+    c = conn.cursor()
+    c.execute("SELECT code, name FROM town WHERE c_code = ?", (district_code,))
+    town_data = c.fetchall()
+    conn.close()
+    return town_data
+
 
 templates_directory = os.path.join(PARENT_DIR, "templates")
 templates = Jinja2Templates(directory=templates_directory)
