@@ -7,7 +7,7 @@ from database_ops import create_village_table,insert_village
 from time_logger import TimeLogger
 
 
-base_url = '手动添加URL地址'
+base_url = 'https://www.stats.gov.cn/sj/tjbz/tjyqhdmhcxhfdm/2023/'
 
 
 def op_provinces_data():
@@ -33,8 +33,9 @@ def op_city_data():
                 insert_city(city['code'],city['name'],province_code,city['url'])
         else:
            if city_data:  
-            # print(f'特殊城市------{city_data[0]["name"]}---{city_data[0]["code"]}')
-            insert_city(city_data[0]['code'], city_data[0]['name'], province_code, city_data[0]['url'])
+                for city in city_data:
+                    # print(f'特殊城市------{city["name"]}---{city["code"]}')
+                    insert_city(city['code'], city['name'], province_code, city['url'])
     print("地级数据插入完成！！！")
 
 
@@ -91,10 +92,10 @@ def main():
     time_logger.start()
 
     # op_provinces_data()
-    # op_city_data()
+    op_city_data()
     # op_county_data()
     # op_town_data()
-    op_village_data()
+    # op_village_data()
 
     # 结束时间
     time_logger.end()
