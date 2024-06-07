@@ -1,8 +1,9 @@
-from fetch_data import fetch_province_data, fetch_city_data, fetch_county_data, fetch_town_data, fetch_url
+from fetch_data import fetch_province_data, fetch_city_data, fetch_county_data, fetch_town_data,fetch_village_data,fetch_url
 from database_ops import create_provinces_table, insert_province,get_all_provinces
 from database_ops import create_city_table, insert_city,get_all_city
 from database_ops import create_county_table, insert_county,get_all_county
-from database_ops import create_town_table, insert_town
+from database_ops import create_town_table,insert_town,get_all_town
+from database_ops import create_village_table,insert_village
 from time_logger import TimeLogger
 
 
@@ -60,10 +61,25 @@ def op_town_data():
         town_data = fetch_town_data(town_url)
         county_code = county[0]
         p_code = county[3]
+        c_c_code = county[4].split('/')[0] 
         for town in town_data:
             print(town)
-            insert_town(town['code'],town['name'],county_code,p_code,town['url'])
+            insert_town(town['code'],town['name'],county_code,p_code,c_c_code,town['url'])
     print("乡级数据插入完成！！！")
+
+
+def op_village_data():
+    create_village_table()
+    town_data = get_all_town()
+    for town in town_data:
+        province_code = town[3]
+        village_url = fetch_url(base_url + province_code + "/" + town[4] ,town[5])
+        village_data = fetch_village_data(village_url)
+        town_code = town[0]
+        for village in village_data:
+            print(village)
+            insert_village(village['code'],village['name'],town_code,village['classify_code'])
+    print("村级数据插入完成！！！")
 
 
 def main():
@@ -77,7 +93,8 @@ def main():
     # op_provinces_data()
     # op_city_data()
     # op_county_data()
-    op_town_data()
+    # op_town_data()
+    op_village_data()
 
     # 结束时间
     time_logger.end()

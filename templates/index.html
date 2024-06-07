@@ -52,8 +52,11 @@
         <select id="county" onchange="loadTown()">
             <option>Select County</option>
         </select>
-        <select id="town">
+        <select id="town" onchange="loadVillage()">
             <option>Select Town</option>
+        </select>
+        <select id="village">
+            <option>Select Village</option>
         </select>
     </div>
 
@@ -103,8 +106,8 @@
         }
 
         function loadTown() {
-            const townCode = document.getElementById('county').value;
-            fetch(`/api/towns/${townCode}`)
+            const countyCode = document.getElementById('county').value;
+            fetch(`/api/towns/${countyCode}`)
                 .then(response => response.json())
                 .then(data => {
                     const townSelect = document.getElementById('town');
@@ -112,6 +115,20 @@
                     data.forEach(([code, name]) => {
                         const option = new Option(name, code);
                         townSelect.add(option);
+                    });
+                });
+        }
+
+        function loadVillage() {
+            const townCode = document.getElementById('town').value;
+            fetch(`/api/villages/${townCode}`)
+                .then(response => response.json())
+                .then(data => {
+                    const villageSelect = document.getElementById('village');
+                    villageSelect.innerHTML = '<option>Select Village</option>'; // reset
+                    data.forEach(([code, name]) => {
+                        const option = new Option(name, code);
+                        villageSelect.add(option);
                     });
                 });
         }

@@ -122,19 +122,57 @@ def create_town_table():
                     name TEXT,
                     c_code TEXT,
                     p_code TEXT,
+                    c_c_code TEXT,
                     url TEXT
                 )''')
 
 # 插入乡镇街道表
-def insert_town(code,name,c_code,p_code,url):
+def insert_town(code,name,c_code,p_code,c_c_code,url):
     conn = sqlite3.connect('../regions.db')
     c = conn.cursor()
     c.execute("""
-            INSERT INTO town (code, name, c_code, p_code, url) 
-            VALUES (?, ?, ?, ?, ?)
+            INSERT INTO town (code, name, c_code, p_code, c_c_code, url) 
+            VALUES (?, ?, ?, ?, ?, ?)
             ON CONFLICT(code) DO UPDATE SET
             name = excluded.name;
-            """, (code, name, c_code, p_code, url))
+            """, (code, name, c_code, p_code, c_c_code, url))
     conn.commit()
     conn.close()
 
+# 获取乡镇级数据
+def get_all_town():
+    conn = sqlite3.connect('../regions.db')
+    c = conn.cursor()
+    c.execute('SELECT * FROM town')
+    town = c.fetchall()
+    conn.close()
+    return town
+
+
+
+
+# 村级表
+def create_village_table():
+    conn = sqlite3.connect('../regions.db')
+    c = conn.cursor()
+    with conn:
+        c.execute('''
+                CREATE TABLE IF NOT EXISTS village (
+                    code TEXT UNIQUE,
+                    name TEXT,
+                    t_code TEXT,
+                    classify_code TEXT
+                )''')
+
+# 插入村级表
+def insert_village(code,name,t_code,classify_code):
+    conn = sqlite3.connect('../regions.db')
+    c = conn.cursor()
+    c.execute("""
+            INSERT INTO village (code, name, t_code, classify_code) 
+            VALUES (?, ?, ?, ?)
+            ON CONFLICT(code) DO UPDATE SET
+            name = excluded.name;
+            """, (code, name, t_code, classify_code))
+    conn.commit()
+    conn.close()

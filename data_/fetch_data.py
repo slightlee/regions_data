@@ -93,21 +93,31 @@ def fetch_county_data(url):
     county_list = []  # 初始化一个空列表来存储区县数据
 
     # 查找区县的表格
-    county_table = soup.find('table', class_='countytable')  # 根据实际的class名来确定
+    county_table = soup.find('table', class_='countytable')
     if county_table:
         for county_tr in county_table.find_all('tr', class_='countytr'):
             county_details = {}  
+            # 获取区划代码
             code_td = county_tr.find('td')
-            if code_td and code_td.find('a'):
-                county_details['code'] = code_td.find('a').text.strip()
-                county_details['url'] = code_td.find('a')['href'].strip()
+            if code_td:
+                code_a = code_td.find('a')
+                if code_a and 'href' in code_a.attrs:
+                    county_details['code'] = code_a.text.strip()
+                    county_details['url'] = code_a['href'].strip()
+                else:
+                    county_details['code'] = code_td.text.strip()  # 如：河北省/石家庄市/市辖区  
+                    county_details['url'] = ''      
+            # 获取名称
             name_td = code_td.find_next_sibling('td')
             if name_td and name_td.find('a'):
                 county_details['name'] = name_td.find('a').text.strip()
+            else:
+                county_details['name'] = name_td.text.strip()
+            # 如果字典不为空，则添加到列表中
             if county_details:
-                county_list.append(county_details)  # 将区县数据添加到列表中
+                county_list.append(county_details)
     else:
-        print("未找到区县信息表格。")
+        print("未找到区县信息表格。。")
 
     return county_list
 
@@ -140,6 +150,34 @@ def fetch_town_data(url):
         print("未找到乡镇街道信息表格。")
 
     return town_list
+
+
+# 村级数据
+def fetch_village_data(url):
+    response = requests.get(url, headers=headers)
+    response.encoding = response.apparent_encoding
+
+    if response.status_code != 200:
+        print('获取数据失败: 状态码', response.status_code)
+        return []
+
+    soup = BeautifulSoup(response.text, 'html.parser')
+    village_list = [] 
+
+    village_table = soup.find('table', class_='villagetable')  
+    if village_table:
+        for village_tr in village_table.find_all('tr', class_='villagetr'):
+            village_details = {}  
+            tds = village_tr.find_all('td')
+            if len(tds) >= 3:
+                village_details['code'] = tds[0].text.strip()
+                village_details['classify_code'] = tds[1].text.strip()
+                village_details['name'] = tds[2].text.strip()
+                village_list.append(village_details) 
+    else:
+        print("未找到村级信息表格。")
+
+    return village_list
 
 
 # 拼接地址 
