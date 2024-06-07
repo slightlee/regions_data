@@ -34,30 +34,49 @@
 
         .selector-container {
             display: flex;
-            /* flex-direction: column; */ /* 竖向排列 */
             flex-direction: row; /* 横向排列 */
             align-items: center; /* 水平居中 */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column; /* 竖向排列 */
+            align-items: center; /* 水平居中 */
+            margin-top: -350px; /* 减少上方的空白 */
+        }
+        
+        .description {
+            margin-bottom: 20px; 
+            font-size: 36px; 
+            color: #333;
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #fff;
+            border-radius: 5px;
         }
     </style>
 </head>
 
 <body>
-    <div class="selector-container">
-        <select id="province" onchange="loadCities()">
-            <option>Select Province</option>
-        </select>
-        <select id="city" onchange="loadCountys()">
-            <option>Select City</option>
-        </select>
-        <select id="county" onchange="loadTown()">
-            <option>Select County</option>
-        </select>
-        <select id="town" onchange="loadVillage()">
-            <option>Select Town</option>
-        </select>
-        <select id="village">
-            <option>Select Village</option>
-        </select>
+    <div class="container">
+        <div class="description">中国区划代码</div>
+        <div class="selector-container">
+            <select id="province" onchange="loadCities()">
+                <option>Select Province</option>
+            </select>
+            <select id="city" onchange="loadCountys()">
+                <option>Select City</option>
+            </select>
+            <select id="county" onchange="loadTown()">
+                <option>Select County</option>
+            </select>
+            <select id="town" onchange="loadVillage()">
+                <option>Select Town</option>
+            </select>
+            <select id="village">
+                <option>Select Village</option>
+            </select>
+        </div>
     </div>
 
     <script>
