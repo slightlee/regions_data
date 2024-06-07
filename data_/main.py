@@ -7,7 +7,7 @@ from database_ops import create_village_table,insert_village
 from time_logger import TimeLogger
 
 
-base_url = 'https://www.stats.gov.cn/sj/tjbz/tjyqhdmhcxhfdm/2023/'
+base_url = '手动添加URL地址'
 
 
 def op_provinces_data():
