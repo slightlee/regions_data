@@ -12,8 +12,10 @@
             background-color: #f4f4f4;
             display: flex;
             align-items: center;
-            justify-content: center; /* 垂直水平居中 */
-            height: 100vh; /* 使body占满整个视口高度 */
+            justify-content: center;
+            /* 垂直水平居中 */
+            height: 100vh;
+            /* 使body占满整个视口高度 */
         }
 
         select {
@@ -34,24 +36,28 @@
 
         .selector-container {
             display: flex;
-            flex-direction: row; /* 横向排列 */
-            align-items: center; /* 水平居中 */
+            flex-direction: row;
+            /* 横向排列 */
+            align-items: center;
+            /* 水平居中 */
         }
 
         .container {
             display: flex;
-            flex-direction: column; /* 竖向排列 */
-            align-items: center; /* 水平居中 */
-            margin-top: -350px; /* 减少上方的空白 */
+            flex-direction: column;
+            /* 竖向排列 */
+            align-items: center;
+            /* 水平居中 */
+            margin-top: -350px;
+            /* 减少上方的空白 */
         }
-        
+
         .description {
-            margin-bottom: 20px; 
-            font-size: 36px; 
+            margin-bottom: 20px;
+            font-size: 36px;
             color: #333;
             text-align: center;
             padding: 50px 20px;
-            background-color: #fff;
             border-radius: 5px;
         }
     </style>
@@ -101,13 +107,13 @@
                     citySelect.innerHTML = '<option>Select City</option>';
 
                     const countySelect = document.getElementById('county');
-                    countySelect.innerHTML = '<option>Select County</option>'; 
+                    countySelect.innerHTML = '<option>Select County</option>';
 
                     const townSelect = document.getElementById('town');
-                    townSelect.innerHTML = '<option>Select Town</option>'; 
+                    townSelect.innerHTML = '<option>Select Town</option>';
 
                     const villageSelect = document.getElementById('village');
-                    villageSelect.innerHTML = '<option>Select Village</option>'; 
+                    villageSelect.innerHTML = '<option>Select Village</option>';
 
                     data.forEach(([code, name]) => {
                         const option = new Option(name, code);
@@ -122,13 +128,13 @@
                 .then(response => response.json())
                 .then(data => {
                     const countySelect = document.getElementById('county');
-                    countySelect.innerHTML = '<option>Select County</option>'; 
+                    countySelect.innerHTML = '<option>Select County</option>';
 
                     const townSelect = document.getElementById('town');
-                    townSelect.innerHTML = '<option>Select Town</option>'; 
+                    townSelect.innerHTML = '<option>Select Town</option>';
 
                     const villageSelect = document.getElementById('village');
-                    villageSelect.innerHTML = '<option>Select Village</option>'; 
+                    villageSelect.innerHTML = '<option>Select Village</option>';
                     data.forEach(([code, name]) => {
                         const option = new Option(name, code);
                         countySelect.add(option);
@@ -142,10 +148,10 @@
                 .then(response => response.json())
                 .then(data => {
                     const townSelect = document.getElementById('town');
-                    townSelect.innerHTML = '<option>Select Town</option>'; 
+                    townSelect.innerHTML = '<option>Select Town</option>';
 
                     const villageSelect = document.getElementById('village');
-                    villageSelect.innerHTML = '<option>Select Village</option>'; 
+                    villageSelect.innerHTML = '<option>Select Village</option>';
                     data.forEach(([code, name]) => {
                         const option = new Option(name, code);
                         townSelect.add(option);
@@ -159,7 +165,7 @@
                 .then(response => response.json())
                 .then(data => {
                     const villageSelect = document.getElementById('village');
-                    villageSelect.innerHTML = '<option>Select Village</option>'; 
+                    villageSelect.innerHTML = '<option>Select Village</option>';
                     data.forEach(([code, name]) => {
                         const option = new Option(name, code);
                         villageSelect.add(option);
