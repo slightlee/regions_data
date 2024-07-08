@@ -10,13 +10,13 @@ regions_data
 │  └── __init__.py
 ├── data                       # 处理后数据【可直接使用】
 │  ├── json                       # json 格式数据
-│  |  ├── city.json                     # 市数据
-│  |  ├── county.json                   # 区县数据
-│  |  ├── province.json                 # 省数据
-│  |  ├── town.json                     # 乡镇街道数据
-│  |  └── village.json.7z               # 村社区数据【文件较大已压缩,解压使用】
+│  │  ├── city.json                     # 市数据
+│  │  ├── county.json                   # 区县数据
+│  │  ├── province.json                 # 省数据
+│  │  ├── town.json                     # 乡镇街道数据
+│  │  └── village.json.7z               # 村社区数据【文件较大已压缩,解压使用】
 │  ├── sqlite                     # sql 格式数据
-│  |  └── regions.db.7z                 # db数据文件【文件较大已压缩,解压使用】
+│  │  └── regions.db.7z                 # db数据文件【文件较大已压缩,解压使用】
 │  ├── data_ops.py                # 数据操作
 │  └── main.py                    # 入口
 ├── data_                      # 获取数据
