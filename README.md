@@ -9,6 +9,12 @@ regions_data
 │  ├── index.py                   # 接口文件
 │  └── __init__.py
 ├── data                       # 处理后数据【可直接使用】
+│  ├── csv                        # csv 格式数据
+│  │  ├── city.csv                     # 市数据
+│  │  ├── county.csv                   # 区县数据
+│  │  ├── province.csv                 # 省数据
+│  │  ├── town.csv                     # 乡镇街道数据
+│  │  └── village.csv               # 村社区数据【文件较大已压缩,解压使用】
 │  ├── json                       # json 格式数据
 │  │  ├── city.json                     # 市数据
 │  │  ├── county.json                   # 区县数据
@@ -47,6 +53,12 @@ regions_data
   > Json格式数据文件
   >
   > 文件位置: `根目录/data/json/`目录下
+
+- CSV
+
+  > csv格式数据文件
+  >
+  > 文件位置: `根目录/data/csv/`目录下
 
 ## 数据来源：
 
