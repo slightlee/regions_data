@@ -24,6 +24,7 @@ regions_data
 │  ├── sqlite                     # sql 格式数据
 │  │  └── regions.db.7z                 # db数据文件【文件较大已压缩,解压使用】
 │  ├── data_ops.py                # 数据操作
+│  ├── data2csv.py                # json数据转为csv数据操作
 │  └── main.py                    # 入口
 ├── data_                      # 获取数据
 │  ├── database_ops.py            # 数据操作
@@ -99,6 +100,19 @@ regions_data
 
 效果图：
 ![xg](./images/xg.gif)
+
+
+## 如何贡献
+
+非常欢迎你的加入！[提一个 Issue](https://github.com/slightlee/regions_data/issues/new/choose) 或者提交一个 Pull Request。
+
+**Pull Request:**
+
+1. Fork 代码
+2. 创建自己的分支: `git checkout -b feat/xxxx`
+3. 提交你的修改: `git commit -am 'feat(function): add xxxxx'`
+4. 推送您的分支: `git push origin feat/xxxx`
+5. 提交`pull request`
 
 
 ## 拓展
