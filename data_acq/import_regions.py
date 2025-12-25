@@ -345,7 +345,7 @@ def main():
     
     if not json_path:
         print("错误: 找不到 JSON 数据文件！")
-        print("请先运行 fetch_regions.py 爬取数据")
+        print("请先运行 fetch_regions.py 获取数据")
         sys.exit(1)
     
     print(f"数据库: {db_path}")

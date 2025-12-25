@@ -1,6 +1,6 @@
 """
 行政区划数据爬取脚本
-数据来源：民政部地名信息库 https://dmfw.mca.gov.cn/9095/xzqh/getList
+数据来源：民政部地名信息库 
 """
 
 import requests
@@ -11,13 +11,13 @@ from datetime import datetime
 
 
 class RegionsFetcher:
-    """行政区划数据爬取器"""
+    """行政区划数据获取"""
     
-    BASE_URL = "https://dmfw.mca.gov.cn/9095/xzqh/getList"
+    BASE_URL = "换成实际接口地址"
     
     def __init__(self, year=None, max_level=2, output_dir="data"):
         """
-        初始化爬取器
+        初始化
         
         Args:
             year: 数据年份，默认为最新年份
@@ -98,9 +98,9 @@ class RegionsFetcher:
     
     def crawl_all(self):
         """
-        爬取全量数据
+        获取全量数据
         """
-        print(f"开始爬取行政区划数据...")
+        print(f"开始获取行政区划数据...")
         print(f"年份: {self.year or '最新'}")
         print("-" * 50)
         
@@ -191,7 +191,7 @@ class RegionsFetcher:
         
         elapsed = time.time() - start_time
         print(f"\n{'=' * 50}")
-        print(f"爬取完成！")
+        print(f"获取完成！")
         print(f"总记录数: {len(self.all_regions)}")
         print(f"请求次数: {self.request_count}")
         print(f"失败请求: {len(self.failed_requests)}")
