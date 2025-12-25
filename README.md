@@ -1,4 +1,4 @@
-# 中国行政区划数据
+# 行政区划数据
 
 [![GitHub stars](https://img.shields.io/github/stars/slightlee/regions_data?style=flat-square)](https://github.com/slightlee/regions_data/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/slightlee/regions_data?style=flat-square)](https://github.com/slightlee/regions_data/network/members)
@@ -7,7 +7,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](https://github.com/slightlee/regions_data/pulls)
 [![Data Update](https://img.shields.io/badge/数据更新-2025--12--24-blue?style=flat-square)](https://dmfw.mca.gov.cn)
 
-> 🗺️ 中国行政区划数据，包括省级、地级、县级、乡镇级四级行政区划数据。
+> 🗺️ 行政区划数据，包括省级、地级、县级、乡镇级四级行政区划数据。
 
 ## ✨ 特性
 

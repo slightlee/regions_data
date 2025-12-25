@@ -13,7 +13,7 @@ from contextlib import contextmanager
 
 app = FastAPI(
     title="行政区划 API",
-    description="中国行政区划数据查询接口",
+    description="行政区划数据查询接口",
     version="2.0.0"
 )
 
