@@ -1,7 +1,10 @@
 # 中国行政区划数据
 
 [![GitHub stars](https://img.shields.io/github/stars/slightlee/regions_data?style=flat-square)](https://github.com/slightlee/regions_data/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/slightlee/regions_data?style=flat-square)](https://github.com/slightlee/regions_data/network/members)
 [![GitHub license](https://img.shields.io/github/license/slightlee/regions_data?style=flat-square)](https://github.com/slightlee/regions_data/blob/main/LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.8+-blue?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](https://github.com/slightlee/regions_data/pulls)
 [![Data Update](https://img.shields.io/badge/数据更新-2025--12--24-blue?style=flat-square)](https://dmfw.mca.gov.cn)
 
 > 🗺️ 中国行政区划数据，包括省级、地级、县级、乡镇级四级行政区划数据。
@@ -66,6 +69,36 @@ http://127.0.0.1:8000/
 
 ![效果图](./images/area.gif)
 
-## 声明
+## 📜 更新日志
 
-> 本项目仅供交流学习使用，请勿用于违法用途，如有侵权，请联系删除。
+详见 [Releases](https://github.com/slightlee/regions_data/releases) 页面。
+
+| 版本 | 日期 | 说明 |
+|------|------|------|
+| v1.0.2 | 2025-12-24 | 重构项目，数据来源切换至国家地名信息库，调整为四级行政区划 |
+| v1.0.1 | - | 旧版本，五级行政区划（含村级），数据来源于国家统计局 |
+
+## 📄 许可证
+
+本项目采用 [MIT License](./LICENSE) 开源许可证。
+
+## 🙏 致谢
+
+- 数据来源：[国家地名信息库](https://dmfw.mca.gov.cn)
+- 感谢所有贡献者的支持
+
+## 📮 反馈与贡献
+
+- 🐛 发现问题？请提交 [Issue](https://github.com/slightlee/regions_data/issues)
+- 💡 有好想法？欢迎提交 [Pull Request](https://github.com/slightlee/regions_data/pulls)
+- ⭐ 觉得有用？请给项目一个 Star 支持一下！
+
+## ⭐ Star History
+
+<a href="https://star-history.com/#slightlee/regions_data&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=slightlee/regions_data&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=slightlee/regions_data&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=slightlee/regions_data&type=Date" />
+ </picture>
+</a>
