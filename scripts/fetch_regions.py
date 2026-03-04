@@ -20,8 +20,8 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 class NewRegionsFetcher:
     """新版行政区划数据获取器"""
     
-    GET_LIST_URL = "https://dmfw.mca.gov.cn/xzqh/getList"
-    GET_CODE_LIST_URL = "https://dmfw.mca.gov.cn/xzqh/getCodeList"
+    GET_LIST_URL = "换成实际接口地址"
+    GET_CODE_LIST_URL = "换成实际接口地址"
     
     def __init__(self, table_name="Xzqh20251231", output_dir="data/raw"):
         """
